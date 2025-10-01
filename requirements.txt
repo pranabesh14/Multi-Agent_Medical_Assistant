@@ -1,0 +1,92 @@
+# Python 3.12 Compatible Requirements - Multimodal Medical Assistant
+
+# Core Framework
+streamlit>=1.28.0
+fastapi>=0.104.0
+uvicorn>=0.24.0
+
+# AI/ML Models and Processing
+torch>=2.1.0
+torchvision>=0.16.0
+torchaudio>=2.1.0
+transformers>=4.35.0
+sentence-transformers>=2.2.2
+huggingface-hub>=0.17.0
+
+# LangChain and RAG
+langchain>=0.0.350
+langchain-community>=0.0.0
+faiss-cpu>=1.7.4
+# Note: Use faiss-gpu>=1.7.4 if you have GPU support
+
+# Image Processing
+opencv-python>=4.8.0
+Pillow>=10.0.0
+pydicom>=2.4.0
+scikit-image>=0.21.0
+
+# Medical Text Processing
+spacy>=3.7.0
+nltk>=3.8.0
+# Note: scispacy may not be compatible with Python 3.12 yet
+
+# Document Processing
+PyPDF2>=3.0.0
+python-docx>=1.1.0
+pdfplumber>=0.9.0
+# Removed python-magic as it has Windows compatibility issues
+# Use python-magic-bin on Windows instead
+
+# Data Processing
+pandas>=2.1.0
+numpy>=1.24.0
+scipy>=1.11.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+
+# Vector Database and Search - Updated versions for Python 3.12
+chromadb>=0.4.15
+# Removed pinecone-client and weaviate-client temporarily for compatibility
+
+# Privacy and Security - REMOVED hashlib2 (not needed in Python 3.12)
+cryptography>=41.0.0
+python-decouple>=3.8
+
+# API and Networking
+requests>=2.31.0
+httpx>=0.25.0
+aiohttp>=3.9.0
+
+# Utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+click>=8.1.0
+tqdm>=4.66.0
+# Removed pathlib, uuid, datetime, logging (built-in in Python 3.12)
+
+# Development and Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.9.0
+flake8>=6.1.0
+mypy>=1.6.0
+
+# Ollama Client
+# Note: Install ollama client manually if needed: pip install ollama
+
+# Windows-specific packages
+pywin32>=306; sys_platform == "win32"
+python-magic-bin>=0.4.14; sys_platform == "win32"
+
+# Optional GPU Support
+# nvidia-ml-py>=12.535.0
+# cupy-cuda12x>=12.0.0  # Updated for CUDA 12.x
+
+# Monitoring and Logging
+psutil>=5.9.0
+memory-profiler>=0.61.0
+
+# Additional packages that work well with Python 3.12
+typing-extensions>=4.8.0
+pydantic>=2.0.0

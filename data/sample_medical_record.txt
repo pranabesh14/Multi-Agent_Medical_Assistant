@@ -1,0 +1,36 @@
+
+        MEDICAL RECORD - SAMPLE DATA FOR TESTING
+        =======================================
+        
+        Patient: [SAMPLE_PATIENT]
+        DOB: [DATE]
+        MRN: [MRN_12345]
+        
+        CHIEF COMPLAINT:
+        Patient presents with chest pain and shortness of breath.
+        
+        HISTORY OF PRESENT ILLNESS:
+        45-year-old male presents to the emergency department with acute onset chest pain 
+        that started 2 hours ago. Pain is described as crushing, substernal, radiating 
+        to left arm. Associated with diaphoresis and nausea. No previous cardiac history.
+        
+        PHYSICAL EXAMINATION:
+        Vital Signs: BP 150/90, HR 110, RR 22, O2 Sat 95% on room air
+        General: Anxious appearing male in moderate distress
+        Cardiovascular: Tachycardic, regular rhythm, no murmurs
+        Pulmonary: Clear to auscultation bilaterally
+        
+        DIAGNOSTIC TESTS:
+        EKG: ST elevation in leads II, III, aVF
+        Chest X-ray: Clear lung fields, normal cardiac silhouette
+        Troponin: Elevated at 2.5 ng/mL (normal <0.04)
+        
+        ASSESSMENT AND PLAN:
+        Acute ST-elevation myocardial infarction (STEMI)
+        - Activate cardiac catheterization lab
+        - Administer aspirin, clopidogrel, atorvastatin
+        - Heparin per protocol
+        - Serial cardiac enzymes
+        
+        This is sample data for testing the medical assistant.
+        

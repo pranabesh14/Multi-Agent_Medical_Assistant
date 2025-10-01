@@ -1,0 +1,75 @@
+
+        MEDICAL RECORD - SAMPLE CASE
+        ============================
+        
+        Patient: John Smith
+        DOB: 01/15/1975
+        MRN: 123456789
+        Date: 09/27/2025
+        
+        CHIEF COMPLAINT:
+        45-year-old male presents with acute chest pain and shortness of breath.
+        
+        HISTORY OF PRESENT ILLNESS:
+        Patient reports sudden onset of severe chest pain approximately 2 hours prior to arrival.
+        Pain is described as crushing, substernal, 8/10 severity, radiating to left arm and jaw.
+        Associated with diaphoresis, nausea, and mild dyspnea. Denies previous cardiac events.
+        
+        PAST MEDICAL HISTORY:
+        - Hypertension, controlled on lisinopril 10mg daily
+        - Hyperlipidemia, on atorvastatin 40mg daily
+        - Type 2 diabetes mellitus, diet controlled
+        - No previous hospitalizations
+        
+        MEDICATIONS:
+        - Lisinopril 10mg PO daily
+        - Atorvastatin 40mg PO daily
+        - Metformin 500mg PO BID
+        
+        ALLERGIES:
+        NKDA (No Known Drug Allergies)
+        
+        PHYSICAL EXAMINATION:
+        Vital Signs: BP 160/95, HR 110, RR 24, O2 Sat 94% on room air, Temp 98.6°F
+        General: Anxious appearing male in moderate acute distress
+        HEENT: PERRLA, no JVD
+        Cardiovascular: Tachycardic, regular rhythm, S1 S2 present, no murmurs
+        Pulmonary: Bilateral crackles at bases, otherwise clear
+        Abdomen: Soft, non-tender, non-distended
+        Extremities: No peripheral edema
+        
+        DIAGNOSTIC STUDIES:
+        EKG: ST elevation in leads II, III, aVF consistent with inferior STEMI
+        Chest X-ray: Mild pulmonary edema, normal cardiac silhouette
+        Laboratory Results:
+        - Troponin I: 3.2 ng/mL (elevated, normal <0.04)
+        - CK-MB: 45 ng/mL (elevated)
+        - BNP: 1200 pg/mL (elevated)
+        - CBC: WBC 12.5, Hgb 14.2, Plt 285
+        - BMP: Na 138, K 4.2, Cl 102, CO2 22, BUN 18, Cr 1.1, Glu 165
+        
+        ASSESSMENT AND PLAN:
+        1. Acute ST-elevation myocardial infarction (STEMI) - inferior wall
+           - Emergent cardiac catheterization
+           - Dual antiplatelet therapy: ASA 325mg, Clopidogrel 600mg loading dose
+           - Anticoagulation with heparin per protocol
+           - Atorvastatin 80mg daily
+           - Metoprolol 25mg BID when stable
+        
+        2. Acute heart failure
+           - Furosemide 40mg IV PRN
+           - Monitor I/O, daily weights
+           - ACE inhibitor when stable
+        
+        3. Diabetes mellitus
+           - Continue current regimen
+           - Monitor blood glucose closely
+        
+        DISPOSITION:
+        Patient admitted to cardiac ICU for post-catheterization monitoring.
+        Cardiology consulted. Family notified.
+        
+        Dr. Sarah Johnson, MD
+        Emergency Medicine
+        Phone: (555) 123-4567
+        

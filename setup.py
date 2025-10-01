@@ -44,7 +44,7 @@ class MedicalAssistantSetup:
     
     def install_base_requirements(self):
         """Install base Python requirements"""
-        print("\n📦 Installing Python dependencies...")
+        print("\n Installing Python dependencies...")
         
         requirements_file = self.base_dir / "requirements.txt"
         if not requirements_file.exists():
@@ -71,7 +71,7 @@ class MedicalAssistantSetup:
     
     def setup_ollama(self):
         """Setup Ollama for Llama model"""
-        print("\n🦙 Setting up Ollama for Llama models...")
+        print("\n Setting up Ollama for Llama models...")
         
         # Check if Ollama is already installed
         try:
@@ -83,14 +83,14 @@ class MedicalAssistantSetup:
         except FileNotFoundError:
             pass
         
-        print("📥 Ollama not found. Installation required...")
+        print(" Ollama not found. Installation required...")
         
         if self.platform == "windows":
-            print("🪟 Windows detected - Please download Ollama from: https://ollama.ai/download")
+            print(" Windows detected - Please download Ollama from: https://ollama.ai/download")
             print("   After installation, run this setup script again.")
             return False
         elif self.platform == "darwin":  # macOS
-            print("🍎 macOS detected - Installing Ollama...")
+            print(" macOS detected - Installing Ollama...")
             try:
                 subprocess.check_call(["brew", "install", "ollama"])
                 print(" Ollama installed via Homebrew")
@@ -100,7 +100,7 @@ class MedicalAssistantSetup:
                 print("   Please install manually from: https://ollama.ai/download")
                 return False
         else:  # Linux
-            print("🐧 Linux detected - Installing Ollama...")
+            print(" Linux detected - Installing Ollama...")
             try:
                 # Download and install Ollama
                 install_script = "curl -fsSL https://ollama.ai/install.sh | sh"
@@ -114,7 +114,7 @@ class MedicalAssistantSetup:
     
     def pull_llama_model(self):
         """Pull the Llama model using Ollama"""
-        print("📥 Downloading Llama2 model (this may take a while)...")
+        print(" Downloading Llama2 model (this may take a while)...")
         
         try:
             # Start Ollama service
@@ -137,7 +137,7 @@ class MedicalAssistantSetup:
     
     def download_spacy_models(self):
         """Download required spaCy models"""
-        print("\n🧠 Downloading spaCy models...")
+        print("\n Downloading spaCy models...")
         
         models = [
             "en_core_web_sm",
@@ -146,7 +146,7 @@ class MedicalAssistantSetup:
         
         for model in models:
             try:
-                print(f"📥 Downloading {model}...")
+                print(f" Downloading {model}...")
                 subprocess.check_call([
                     self.python_executable, "-m", "spacy", "download", model
                 ])
@@ -178,7 +178,7 @@ class MedicalAssistantSetup:
     
     def create_directories(self):
         """Create necessary directories"""
-        print("\n📁 Creating directory structure...")
+        print("\n Creating directory structure...")
         
         directories = [
             "data",
@@ -201,7 +201,7 @@ class MedicalAssistantSetup:
     
     def create_sample_data(self):
         """Create sample medical data for testing"""
-        print("\n📄 Creating sample data...")
+        print("\n Creating sample data...")
         
         sample_text = """
         MEDICAL RECORD - SAMPLE DATA FOR TESTING
@@ -286,7 +286,7 @@ DEBUG=True
     
     def verify_installation(self):
         """Verify that everything is installed correctly"""
-        print("\n🔍 Verifying installation...")
+        print("\n Verifying installation...")
         
         # Check Python packages
         required_packages = [
@@ -328,13 +328,13 @@ DEBUG=True
             print(f"\n Missing packages: {', '.join(missing_packages)}")
             return False
         
-        print("\n🎉 Installation verification complete!")
+        print("\n Installation verification complete!")
         return True
     
     def print_next_steps(self):
         """Print next steps for the user"""
         print("\n" + "=" * 60)
-        print("🎉 SETUP COMPLETE!")
+        print(" SETUP COMPLETE!")
         print("=" * 60)
         print("\nNEXT STEPS:")
         print("1. Ensure Ollama is running: 'ollama serve'")

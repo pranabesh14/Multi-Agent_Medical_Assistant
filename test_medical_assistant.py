@@ -43,7 +43,7 @@ class MedicalAssistantTester:
     
     def create_sample_data(self):
         """Create sample medical data for testing"""
-        print("📄 Creating sample medical data...")
+        print(" Creating sample medical data...")
         
         # Sample medical text
         sample_medical_text = """
@@ -149,7 +149,7 @@ class MedicalAssistantTester:
         with open(self.sample_data_dir / "sample_xray_report.txt", 'w') as f:
             f.write(sample_image_info)
         
-        print("✅ Sample data created successfully")
+        print(" Sample data created successfully")
         return True
     
     def test_configuration(self):
@@ -161,7 +161,7 @@ class MedicalAssistantTester:
             validation_result = self.config.validate_config()
             
             if validation_result['valid']:
-                print("✅ Configuration validation passed")
+                print(" Configuration validation passed")
                 self.test_results['configuration'] = 'PASS'
             else:
                 print("❌ Configuration validation failed:")
@@ -171,10 +171,10 @@ class MedicalAssistantTester:
                 
             # Test environment info
             env_info = self.config.get_environment_info()
-            print(f"📊 Environment: {env_info['platform']}")
-            print(f"🐍 Python: {env_info['python_version']}")
-            print(f"🔥 PyTorch: {env_info['torch_version']}")
-            print(f"🚀 CUDA: {'Available' if env_info['cuda_available'] else 'Not Available'}")
+            print(f" Environment: {env_info['platform']}")
+            print(f" Python: {env_info['python_version']}")
+            print(f" PyTorch: {env_info['torch_version']}")
+            print(f" CUDA: {'Available' if env_info['cuda_available'] else 'Not Available'}")
             
             return validation_result['valid']
             
@@ -201,19 +201,19 @@ class MedicalAssistantTester:
             response = processor.generate_response(test_prompt, max_tokens=200)
             
             if response and len(response) > 10:
-                print("✅ Basic response generation working")
-                print(f"📝 Sample response: {response[:100]}...")
+                print(" Basic response generation working")
+                print(f" Sample response: {response[:100]}...")
                 
                 # Test medical response
                 medical_query = "A patient presents with chest pain and elevated troponin. What could this indicate?"
                 medical_response = processor.generate_medical_response(medical_query)
                 
                 if "disclaimer" in medical_response.lower():
-                    print("✅ Medical disclaimer included")
+                    print(" Medical disclaimer included")
                     self.test_results['llama'] = 'PASS'
                     return True
                 else:
-                    print("⚠️  Medical disclaimer missing")
+                    print("  Medical disclaimer missing")
                     self.test_results['llama'] = 'PARTIAL'
                     return True
             else:
@@ -228,7 +228,7 @@ class MedicalAssistantTester:
     
     def test_text_processor(self):
         """Test medical text processor"""
-        print("\n📝 Testing medical text processor...")
+        print("\n Testing medical text processor...")
         
         try:
             processor = MedicalTextProcessor()
@@ -244,22 +244,22 @@ class MedicalAssistantTester:
             result = processor.process_medical_text(sample_text)
             
             if result.get('processing_status') == 'success':
-                print("✅ Text processing successful")
+                print(" Text processing successful")
                 
                 # Check for medical entities
                 entities = result.get('entities', {})
                 if any(entities.values()):
-                    print(f"✅ Medical entities detected: {len(entities)} categories")
+                    print(f" Medical entities detected: {len(entities)} categories")
                     
                 # Check embeddings
                 embeddings = result.get('embeddings')
                 if embeddings:
-                    print("✅ Text embeddings generated")
+                    print(" Text embeddings generated")
                     
                 # Check clinical assessment
                 assessment = result.get('clinical_assessment', {})
                 if assessment:
-                    print(f"✅ Clinical assessment: complexity={assessment.get('complexity_score', 0):.2f}")
+                    print(f" Clinical assessment: complexity={assessment.get('complexity_score', 0):.2f}")
                 
                 self.test_results['text_processor'] = 'PASS'
                 return True
@@ -275,23 +275,23 @@ class MedicalAssistantTester:
     
     def test_image_processor(self):
         """Test medical image processor"""
-        print("\n🖼️  Testing medical image processor...")
+        print("\n  Testing medical image processor...")
         
         try:
             processor = MedicalImageProcessor()
             
             if not processor.check_medclip_status():
-                print("⚠️  MedCLIP model not available, skipping image tests")
+                print("  MedCLIP model not available, skipping image tests")
                 self.test_results['image_processor'] = 'SKIP'
                 return True
             
             # Since we can't create actual medical images in this test,
             # we'll test the processor initialization and methods
-            print("✅ MedCLIP model loaded successfully")
+            print(" MedCLIP model loaded successfully")
             
             # Test supported formats
             supported_formats = ['.dcm', '.png', '.jpg', '.jpeg']
-            print(f"✅ Supported formats: {supported_formats}")
+            print(f" Supported formats: {supported_formats}")
             
             self.test_results['image_processor'] = 'PASS'
             return True
@@ -303,7 +303,7 @@ class MedicalAssistantTester:
     
     def test_rag_system(self):
         """Test RAG system functionality"""
-        print("\n🔍 Testing RAG system...")
+        print("\n Testing RAG system...")
         
         try:
             rag_system = MedicalRAGSystem()
@@ -324,18 +324,18 @@ class MedicalAssistantTester:
             doc_id = rag_system.add_document(sample_doc, "test_document.txt")
             
             if doc_id:
-                print("✅ Document added to RAG system")
+                print(" Document added to RAG system")
                 
                 # Test query
                 query_results = rag_system.query("What is myocardial infarction?", max_results=3)
                 
                 if query_results:
-                    print(f"✅ Query returned {len(query_results)} results")
-                    print(f"📊 Top result score: {query_results[0]['score']:.3f}")
+                    print(f" Query returned {len(query_results)} results")
+                    print(f" Top result score: {query_results[0]['score']:.3f}")
                     
                     # Test statistics
                     stats = rag_system.get_statistics()
-                    print(f"📈 RAG statistics: {stats['total_documents']} docs, {stats['total_chunks']} chunks")
+                    print(f" RAG statistics: {stats['total_documents']} docs, {stats['total_chunks']} chunks")
                     
                     self.test_results['rag_system'] = 'PASS'
                     return True
@@ -355,7 +355,7 @@ class MedicalAssistantTester:
     
     def test_privacy_utils(self):
         """Test privacy and de-identification utilities"""
-        print("\n🛡️  Testing privacy utilities...")
+        print("\n  Testing privacy utilities...")
         
         try:
             deidentifier = DataDeidentifier()
@@ -379,16 +379,16 @@ class MedicalAssistantTester:
             # Validate de-identification
             validation = deidentifier.validate_deidentification(phi_text, deidentified)
             
-            print(f"✅ De-identification completed")
-            print(f"🔒 Confidence score: {validation['confidence_score']:.2f}")
-            print(f"📊 Validation passed: {validation['validation_passed']}")
+            print(f" De-identification completed")
+            print(f" Confidence score: {validation['confidence_score']:.2f}")
+            print(f" Validation passed: {validation['validation_passed']}")
             
             if validation['confidence_score'] > 0.8:
-                print("✅ High confidence de-identification")
+                print(" High confidence de-identification")
                 self.test_results['privacy'] = 'PASS'
                 return True
             else:
-                print("⚠️  Low confidence de-identification")
+                print("  Low confidence de-identification")
                 self.test_results['privacy'] = 'PARTIAL'
                 return True
                 
@@ -406,7 +406,7 @@ class MedicalAssistantTester:
             
             # Test supported formats
             formats = file_handler.get_supported_formats()
-            print(f"✅ Supported formats: {len(formats['all'])} total")
+            print(f" Supported formats: {len(formats['all'])} total")
             
             # Create a temporary text file
             with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as temp_file:
@@ -418,13 +418,13 @@ class MedicalAssistantTester:
                 extracted_text = file_handler.extract_text(temp_path)
                 
                 if extracted_text and len(extracted_text) > 0:
-                    print("✅ Text extraction working")
+                    print(" Text extraction working")
                     
                     # Test metadata extraction
                     metadata = file_handler.get_file_metadata(temp_path)
                     
                     if metadata and 'filename' in metadata:
-                        print("✅ Metadata extraction working")
+                        print(" Metadata extraction working")
                         self.test_results['file_handler'] = 'PASS'
                         return True
                     else:
@@ -447,11 +447,11 @@ class MedicalAssistantTester:
     
     def test_integration(self):
         """Test integration between components"""
-        print("\n🔗 Testing component integration...")
+        print("\n Testing component integration...")
         
         try:
             # Test cross-modal analysis simulation
-            print("🔄 Simulating cross-modal analysis...")
+            print(" Simulating cross-modal analysis...")
             
             # Create sample multimodal data
             sample_image_analysis = {
@@ -486,8 +486,8 @@ class MedicalAssistantTester:
                 result = llama_processor.cross_modal_analysis(multimodal_data)
                 
                 if result.get('response'):
-                    print("✅ Cross-modal analysis successful")
-                    print(f"📋 Generated {len(result.get('evidence', []))} evidence items")
+                    print(" Cross-modal analysis successful")
+                    print(f" Generated {len(result.get('evidence', []))} evidence items")
                     self.test_results['integration'] = 'PASS'
                     return True
                 else:
@@ -495,7 +495,7 @@ class MedicalAssistantTester:
                     self.test_results['integration'] = 'FAIL'
                     return False
             else:
-                print("⚠️  Llama not available, skipping integration test")
+                print("  Llama not available, skipping integration test")
                 self.test_results['integration'] = 'SKIP'
                 return True
                 
@@ -507,7 +507,7 @@ class MedicalAssistantTester:
     def generate_test_report(self):
         """Generate comprehensive test report"""
         print("\n" + "=" * 60)
-        print("📊 TEST REPORT")
+        print(" TEST REPORT")
         print("=" * 60)
         
         total_tests = len(self.test_results)
@@ -517,28 +517,28 @@ class MedicalAssistantTester:
         skipped_tests = sum(1 for result in self.test_results.values() if result == 'SKIP')
         partial_tests = sum(1 for result in self.test_results.values() if result == 'PARTIAL')
         
-        print(f"📈 Total Tests: {total_tests}")
-        print(f"✅ Passed: {passed_tests}")
-        print(f"⚠️  Partial: {partial_tests}")
+        print(f" Total Tests: {total_tests}")
+        print(f" Passed: {passed_tests}")
+        print(f"  Partial: {partial_tests}")
         print(f"❌ Failed: {failed_tests}")
-        print(f"💥 Error: {error_tests}")
-        print(f"⏭️  Skipped: {skipped_tests}")
+        print(f" Error: {error_tests}")
+        print(f"  Skipped: {skipped_tests}")
         
-        print("\n📋 Detailed Results:")
+        print("\n Detailed Results:")
         for component, result in self.test_results.items():
             status_icon = {
-                'PASS': '✅',
+                'PASS': '',
                 'FAIL': '❌',
-                'ERROR': '💥',
-                'SKIP': '⏭️',
-                'PARTIAL': '⚠️'
+                'ERROR': '',
+                'SKIP': '',
+                'PARTIAL': ''
             }.get(result, '❓')
             
             print(f"{status_icon} {component}: {result}")
         
         # Calculate overall score
         score = (passed_tests + (partial_tests * 0.5)) / total_tests * 100
-        print(f"\n🎯 Overall Score: {score:.1f}%")
+        print(f"\n Overall Score: {score:.1f}%")
         
         # Generate recommendations
         print("\n💡 Recommendations:")
@@ -553,9 +553,9 @@ class MedicalAssistantTester:
             print("- Check model availability")
         
         if score >= 80:
-            print("🎉 System is ready for use!")
+            print(" System is ready for use!")
         elif score >= 60:
-            print("⚠️  System partially functional - some features may not work")
+            print("  System partially functional - some features may not work")
         else:
             print("❌ System needs significant fixes before use")
         
@@ -578,13 +578,13 @@ class MedicalAssistantTester:
         with open(report_file, 'w') as f:
             json.dump(report_data, f, indent=2)
         
-        print(f"\n📄 Detailed report saved to: {report_file}")
+        print(f"\n Detailed report saved to: {report_file}")
         
         return score >= 60  # Return True if system is functional
     
     def run_all_tests(self):
         """Run all test suites"""
-        print("🧪 Starting Medical Assistant Test Suite")
+        print(" Starting Medical Assistant Test Suite")
         print("=" * 60)
         
         # Create sample data first
@@ -607,7 +607,7 @@ class MedicalAssistantTester:
                 test_func()
             except Exception as e:
                 component_name = test_func.__name__.replace('test_', '')
-                print(f"💥 Unexpected error in {component_name}: {e}")
+                print(f" Unexpected error in {component_name}: {e}")
                 self.test_results[component_name] = 'ERROR'
         
         # Generate final report
@@ -615,7 +615,7 @@ class MedicalAssistantTester:
 
 def main():
     """Main test function"""
-    print("🏥 Multimodal Medical Assistant - Test Suite")
+    print(" Multimodal Medical Assistant - Test Suite")
     print("=" * 60)
     
     tester = MedicalAssistantTester()
